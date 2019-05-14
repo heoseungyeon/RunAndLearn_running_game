@@ -16,10 +16,10 @@ namespace TeamProjectDemo
         protected int plusHp;
         protected int ObstacleName;
 
-        public Obstacle(System.Windows.Forms.PictureBox picture, int x, int y) : base(picture, x, y)
+        public Obstacle(System.Windows.Forms.PictureBox picture) : base(picture)
         {
             this.x = 600;
-            this.y = this.getHeight();
+            this.y = this.Height;
         }
     }
 }

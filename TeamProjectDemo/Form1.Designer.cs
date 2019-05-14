@@ -1,4 +1,10 @@
-﻿namespace TeamProjectDemo
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TeamProjectDemo
 {
     partial class Form1
     {
@@ -29,38 +35,82 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.components = new System.ComponentModel.Container();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.screen = new System.Windows.Forms.Panel();
+            this.player = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // timer1
             // 
-            this.pictureBox1.Image = global::TeamProjectDemo.Properties.Resources.enemy;
-            this.pictureBox1.Location = new System.Drawing.Point(372, 90);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(118, 106);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 18);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "HP: ";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // screen
+            // 
+            this.screen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.screen.Location = new System.Drawing.Point(0, 0);
+            this.screen.Name = "screen";
+            this.screen.Size = new System.Drawing.Size(1104, 544);
+            this.screen.TabIndex = 2;
+            this.screen.Visible = false;
+            this.screen.SendToBack();
+            // 
+            // player
+            // 
+            this.player.BackColor = System.Drawing.SystemColors.Control;
+            this.player.Image = global::TeamProjectDemo.Properties.Resources.stand;
+            this.player.Location = new System.Drawing.Point(87, 262);
+            this.player.Name = "player";
+            this.player.Size = new System.Drawing.Size(141, 146);
+            this.player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.player.TabIndex = 0;
+            this.player.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 544);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(1104, 544);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.player);
+            this.Controls.Add(this.screen);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox[] book;
+        private System.Windows.Forms.PictureBox[] hotsix;
+        private System.Windows.Forms.PictureBox[] soju;
         private User sy;
+        private List<Item> itemList;
+        private System.Windows.Forms.PictureBox player;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel screen;
     }
 }
+
+
 

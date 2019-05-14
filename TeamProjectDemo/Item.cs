@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Threading;
+
 
 namespace TeamProjectDemo
 {
@@ -14,11 +16,20 @@ namespace TeamProjectDemo
             Hotsix, Jokbo, Soju
         }
         protected int plusHp;
-        protected int itemName;
+        Items itemName;
 
-        public Item(System.Windows.Forms.PictureBox picture, int x, int y) : base(picture, x, y)
+        public Item(System.Windows.Forms.PictureBox picture) : base(picture)
         {
-            this.x = 600;
-        }
+            this.plusHp = 0;
+
+            
+            Random random = new Random();
+            int choice;
+                  
+           
+        }//생성자
+
+      
+       
     }
 }

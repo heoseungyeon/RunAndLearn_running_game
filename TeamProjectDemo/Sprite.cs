@@ -13,18 +13,19 @@ namespace TeamProjectDemo
         protected int y; // 객제 y좌표
         protected int dx; // 단위시간당 x 이동거리 
         protected int dy; // 단위시간당 y 이동거리 
-        protected Image image; // 객체가 가지고 있는 이미지
-        protected System.Windows.Forms.PictureBox picture;
+        protected int width;
+
+        public System.Windows.Forms.PictureBox picture; 
         
    
 
         //생성자
         public Sprite() { }
-        public Sprite(System.Windows.Forms.PictureBox picture, int x, int y)
+        public Sprite(System.Windows.Forms.PictureBox picture)
         {
             this.picture = picture;
-            this.x = x;
-            this.y = y;
+            this.x = picture.Location.X;
+            this.y = picture.Location.Y;
             this.dx = 0;
             this.dy = 0;
         }
@@ -54,23 +55,33 @@ namespace TeamProjectDemo
 
             set { this.dy = value; }
         }
-        public int getWidth()
+        public int Width
         {
-            return image.Width;
+            get { return picture.Width; }
+
+            set { this.picture.Width = value; }
         }
-        public int getHeight()
+        public int Height
         {
-            return image.Height;
+            get { return picture.Height; }
+
+            set { this.picture.Height= value; }
         }
 
-        //funcitional
-        public void draw(Graphics g)
+        public void SetSize(int width, int height)
         {
-            g.DrawImage(image, new Point(this.x, this.y));
+            this.picture.Size = new System.Drawing.Size(width, height);
         }
+
+        public void SetLocation(int x, int y)
+        {
+            this.picture.Location = new Point(x, y);
+        }
+        //funcitional
+        
         public void move()
         {
-            picture.Location = new Point(this.X, picture.Location.Y + dy);
+            picture.Location = new Point(picture.Location.X + (dx), picture.Location.Y + dy);
           
         }
         public bool checkCollision(Sprite other)
@@ -78,11 +89,11 @@ namespace TeamProjectDemo
             Rectangle myRect = new Rectangle();
             Rectangle otherRect = new Rectangle();
 
-            myRect.Location = new Point(x, y);
-            myRect.Size = new Size(getWidth(), getHeight());
+            myRect.Location = new Point(this.picture.Location.X, this.picture.Location.Y);
+            myRect.Size = new Size(this.picture.Width, this.picture.Height);
 
-            otherRect.Location = new Point(other.X, other.Y);
-            otherRect.Size = new Size(other.getWidth(), other.getHeight());
+            otherRect.Location = new Point(other.picture.Location.X, other.picture.Location.Y);
+            otherRect.Size = new Size(other.picture.Width, other.picture.Height);
 
             return myRect.IntersectsWith(otherRect);
         }
